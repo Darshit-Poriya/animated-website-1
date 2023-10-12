@@ -1,0 +1,529 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'montserrat';
+    color: #fff;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+* ::selection {
+    background-color: #fff;
+    color: #95C11E;
+}
+
+body::-webkit-scrollbar {
+    display: block;
+    width: 8px;
+    background-color: #95C11E;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 50px;
+}
+
+#cursor {
+    height: 20px;
+    width: 20px;
+    background-color: #95C11E;
+    border-radius: 50%;
+    position: fixed;
+    /* To fix the cursor at the end */
+    z-index: 99;
+}
+
+#cursor-blur {
+    height: 500px;
+    width: 500px;
+    background-color: #96c11e4f;
+    border-radius: 50%;
+    position: fixed;
+    /* To fix the cursor at the end */
+    filter: blur(40px);
+    z-index: 9;
+    /* TO LOOK BLUR IMAGE BEHIND THE PAGES (GIVE PAGES Z-INDEX 10 FOR MAKE IT EMERGING) */
+}
+
+
+
+#nav {
+    display: flex;
+    position: fixed;
+    height: 140px;
+    width: 100%;
+    /* background-color: red; */
+    padding: 0 150px;
+    gap: 50px;
+    /* To give space between content */
+    align-items: center;
+    /* To center content from Y axis */
+    justify-content: flex-start;
+    /* To set content at the start */
+    z-index: 99;
+}
+
+#nav img {
+    height: 75px;
+}
+
+#nav h4 {
+    text-transform: uppercase;
+    font-weight: 600px;
+    /* Lighter the text */
+}
+
+video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: fixed;
+    z-index: -1;
+    /* Video => Text Effect => Original Text */
+}
+
+#main {
+    position: relative;
+    /* To adjust child element inside the main */
+    background-color: rgba(0, 0, 0, 0.37);
+    /* To give trasparent black look  */
+}
+
+#page1 {
+    height: 100vh;
+    /* Because we are adjusting according to parent  */
+    width: 100%;
+    position: relative;
+    /* To make children inside this in relative manner */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* By default flex items arrange in row wise manner */
+    text-align: center;
+    z-index: 10;
+}
+
+#page1 h1 {
+    font-size: 140px;
+    font-weight: 900;
+    position: relative;
+    /* To make child move with respective to this element : Used for psuedo code to make italic green effect */
+}
+
+/* Using psuedo code to format text in attractive manner */
+#page1 h1::before {
+    content: "EAT. DRINK. PLAY.";
+    position: absolute;
+    /* It will move above from the screen and set on the original text */
+    color: black;
+    top: -6px;
+    left: -6px;
+    z-index: -1;
+    /* To give effect from behind */
+    -webkit-text-stroke: 2px #95C11E;
+
+}
+
+#page1 h2 {
+    font-size: 30px;
+    font-weight: 800;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#page1 p {
+    font-size: 20px;
+    font-weight: 400;
+    width: 40%;
+    /* To format text into shorter paragraphs */
+}
+
+#page1 #arrow {
+    height: 250px;
+    width: 250px;
+    background-color: transparent;
+    border: 3px solid #95C11E;
+    position: absolute;
+    /* TO SET ARROW ON THE SCREEEN ANY WHERE WE WANTED TO SET */
+    display: flex;
+    left: -2%;
+    bottom: 0%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all ease-in-out 0.6s;
+}
+
+#page1 #arrow i {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+/* TO REDUCE THE SIZE OF THE CIRCLE WHILE HOVER OVER IT */
+#page1 #arrow:hover {
+    scale: 0.4;
+    background-color: #95C11E;
+}
+
+
+#page2 {
+    min-height: 100vh;
+    /* TO AVOID BACKGROUND VIDEO FROM BEHIND */
+    width: 100%;
+    z-index: 10;
+}
+
+#scroller {
+    /* background-color: red; */
+    white-space: nowrap;
+    /* CONTINUE CODE ON THE SAME LINE (NO LINE BREAK IS ALLOWED HERE) */
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    z-index: 10;
+    /* WHY??? BECAUSE WE TO POINT CURSOR AT TOP AND BLUR EFFECT BEHIND THE PAGE */
+}
+
+/* HOW TO REMOVE SCROLLER FROM THE WEBPAGE */
+#scroller::-webkit-scrollbar {
+    display: none;
+}
+
+#scroller-in {
+    display: inline-block;
+    /* ALL THE CONTENT ON THE SAME LINE */
+    white-space: nowrap;
+    animation-name: scroll;
+    animation-duration: 40s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#scroller h4 {
+    display: inline-block;
+    font-size: 130px;
+    font-weight: 1100;
+    /* TO MAKE TEXT IN BIGGER SIZE */
+    /* font-family: gilroy; */
+    margin-right: 15px;
+    /* LOOK CLEANER */
+    transition: all linear 0.4s;
+    color: transparent;
+    -webkit-text-stroke: 3px #95C11E;
+}
+
+#scroller h4:hover {
+    color: #95C11E;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+        /* ANIMATE IN X DIRECTION */
+    }
+}
+
+#about-us {
+    height: 40vh;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    position: relative;
+    z-index: 10;
+    /* BECAUSE WE TO POINT CURSOR AT TOP AND BLUR EFFECT BEHIND THE PAGE */
+    padding: 0 50px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#about-us img {
+    height: 220px;
+    width: 220px;
+    border-radius: 25px;
+    object-fit: cover;
+}
+
+#about-us-in {
+    width: 50%;
+    text-align: center;
+}
+
+#about-us-in h3 {
+    font-size: 55px;
+    font-weight: 800;
+    margin-bottom: 40px;
+}
+
+#about-us-in p {
+    font-size: 20px;
+    line-height: 28px;
+}
+
+#cards-container {
+    /* background-color: red; */
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 75px;
+    /* TO GIVE EQUAL SPACE BETWEEN OBJECTS */
+    position: relative;
+    z-index: 10;
+}
+
+.card {
+    height: 80%;
+    width: 25%;
+    /* background-color: blue; */
+    border-radius: 20px;
+    /* HOW BORDER RADIUS IS NOT WORKING?  */
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    /* WHY??? TO SHOW ONLY CARD CONTENT WHICH IS ALREADY THERE */
+    transition: all ease 0.6s;
+
+}
+
+#card1 {
+    background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/home-toptracer-300x200.jpg?strip=all&lossy=1&sharp=1&ssl=1);
+}
+
+#card2 {
+    background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/hero-4-1024x1024.jpg?strip=all&lossy=1&sharp=1&ssl=1);
+}
+
+#card3 {
+    background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/home-lessons-300x200.jpg?strip=all&lossy=1&sharp=1&ssl=1);
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    padding-top: 120px;
+    background-color: #95C11E;
+    opacity: 0;
+    transition: all ease 0.6s;
+}
+
+.overlay h4 {
+    color: black;
+    font-size: 30px;
+    font-weight: 1500;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-bottom: 20px;
+}
+
+.overlay p {
+    color: black;
+    font-size: 18px;
+}
+
+.card:hover .overlay {
+    /* WHEN HOVER OVER CARD => FLIP CARD INTO OVERLAP BY SET OPACITY TO 1 */
+    opacity: 1;
+}
+
+.card:hover {
+    transform: rotate3d(-1, 1, 0, 20deg);
+}
+
+#green-div {
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to left bottom, #ADE022, #15A139);
+
+}
+
+#green-div h4 {
+    width: 45%;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 40px;
+    text-align: center;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: black;
+}
+
+#green-div img {
+    height: 100%;
+    width: 13%;
+    object-fit: cover;
+}
+
+#page3 {
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+
+}
+
+#page3>p {
+    width: 60%;
+    font-size: 25px;
+    font-weight: 900;
+    line-height: 45px;
+    text-align: center;
+}
+
+#page3 img {
+    position: absolute;
+    /* REMEMBER TO GIVE PARENT TAG POSITION: RELATIVE WHILE GIVING THEIR CHILD ABSOLUTE VALUE */
+    height: 60px;
+}
+
+#page3 #colon1 {
+    left: 15%;
+    top: 25%;
+}
+
+#page3 #colon2 {
+    bottom: 30%;
+    right: 15%;
+}
+
+#page4 {
+    height: 40vh;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.elem {
+    height: 70%;
+    width: 25%;
+    overflow: hidden;
+    border-radius: 25px;
+    position: relative;
+}
+
+.elem h2 {
+    height: 100%;
+    width: 100%;
+    color: black;
+    font-size: 30px;
+    font-weight: 1500;
+    background-color: #95C11E;
+    transition: all ease-in-out 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    /* TO MAKE HEADLINE APPEAR AHEAD BEFORE IMAGE */
+    z-index: 10;
+}
+
+.elem img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: all ease-in-out 0.5s;
+    scale: 1.1;
+}
+
+.elem:hover h2 {
+    background-color: transparent;
+    color: white;
+}
+
+.elem:hover img {
+    scale: 1;
+}
+
+#page4 h1 {
+    font-size: 90px;
+    font-weight: 1000;
+    font-family: gilroy;
+    white-space: nowrap;
+    position: absolute;
+    top: -9%;
+    color: black;
+    -webkit-text-stroke: 2px white;
+}
+
+#footer {
+    height: 40vh;
+    width: 100%;
+    background: linear-gradient(to left bottom, #119f3a 0%, #a3d421 80%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6.5vw;
+    padding: 0 100px;
+}
+
+#footer>img {
+    position: absolute;
+    /* TO LOOK IMAGE EMERGE ABOVE ALL */
+    left: 0;
+    height: 100%;
+    z-index: 0;
+}
+
+#f1 img {
+    height: 100px;
+}
+
+#f1,
+#f2,
+#f3,
+#f4 {
+    width: fit-content;
+    position: relative;
+    z-index: 99;
+    /* background-color: red; */
+}
+
+#f2 h3 {
+    font-size: 1.6vw;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+#f3 h3 {
+    font-size: 1.6vw;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+#f4 h4 {
+    font-size: 1vw;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 600;
+    line-height: 20px;
+    margin-bottom: 8px;
+}
